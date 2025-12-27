@@ -73,4 +73,11 @@ const productSchema = mongoose.Schema(
   }
 );
 
+// Add indices for performance
+productSchema.index({ name: 1 }); // Standard index for sorting/regex
+productSchema.index({ status: 1 });
+productSchema.index({ price: 1 });
+productSchema.index({ stock: 1 });
+productSchema.index({ createdAt: -1 });
+
 module.exports = mongoose.model("Product", productSchema);
